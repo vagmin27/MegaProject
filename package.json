@@ -1,5 +1,5 @@
 {
-  "name": "chai-backend",
+  "name": "MegaProject",
   "version": "1.0.0",
   "description": "a backend at chai aur code channel - youtube",
   "type": "module",
@@ -9,10 +9,9 @@
   },
   "keywords": [
     "javascript",
-    "backend",
-    "chai"
+    "backend"
   ],
-  "author": "Hitesh Choudhary",
+  "author": "Vagmin",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1",
