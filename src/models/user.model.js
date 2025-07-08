@@ -9,7 +9,7 @@ const userSchema = new Schema(
             required: true,
             unique: true,
             lowercase: true,
-            trim: true,
+            trim: true, 
             index: true
         },
         email: {
@@ -17,12 +17,12 @@ const userSchema = new Schema(
             required: true,
             unique: true,
             lowecase: true,
-            trim: true,
+            trim: true, 
         },
         fullName: {
             type: String,
             required: true,
-            trim: true,
+            trim: true, 
             index: true
         },
         avatar: {
@@ -45,6 +45,7 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         }
+
     },
     {
         timestamps: true
@@ -80,6 +81,7 @@ userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
             _id: this._id,
+            
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
