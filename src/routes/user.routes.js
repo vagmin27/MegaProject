@@ -23,7 +23,7 @@ router.route("/register").post(
         {
             name: "avatar",
             maxCount: 1
-        }, 
+        },
         {
             name: "coverImage",
             maxCount: 1
@@ -35,7 +35,7 @@ router.route("/register").post(
 router.route("/login").post(loginUser)
 
 //secured routes
-router.route("/logout").post(verifyJWT,  logoutUser)
+router.route("/logout").post(verifyJWT, logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
 router.route("/change-password").post(verifyJWT, changeCurrentPassword)
 router.route("/current-user").get(verifyJWT, getCurrentUser)

@@ -130,7 +130,7 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     if (!isPasswordValid) {
         throw new ApiError(401, "Invalid user credentials")
-        }
+    }
 
     const {accessToken, refreshToken} = await generateAccessAndRefreshTokens(user._id)
 
@@ -147,7 +147,7 @@ const loginUser = asyncHandler(async (req, res) =>{
     .cookie("refreshToken", refreshToken, options)
     .json(
         new ApiResponse(
-            200, 
+            200,
             {
                 user: loggedInUser, accessToken, refreshToken
             },
@@ -478,7 +478,6 @@ const getWatchHistory = asyncHandler(async(req, res) => {
         )
     )
 })
-
 
 export {
     changeCurrentPassword,
