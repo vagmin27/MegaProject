@@ -6,7 +6,6 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
-
 const generateAccessAndRefreshTokens = async(userId) =>{
     try {
         const user = await User.findById(userId)
@@ -17,7 +16,6 @@ const generateAccessAndRefreshTokens = async(userId) =>{
         await user.save({ validateBeforeSave: false })
 
         return {accessToken, refreshToken}
-
 
     } catch (error) {
         throw new ApiError(500, "Something went wrong while generating refresh and access token")
@@ -34,7 +32,6 @@ const registerUser = asyncHandler( async (req, res) => {
     // remove password and refresh token field from response
     // check for user creation
     // return res
-
 
     const {fullName, email, username, password } = req.body
     //console.log("email: ", email);
@@ -61,7 +58,6 @@ const registerUser = asyncHandler( async (req, res) => {
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
         coverImageLocalPath = req.files.coverImage[0].path
     }
-    
 
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required")
@@ -219,7 +215,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         .cookie("refreshToken", newRefreshToken, options)
         .json(
             new ApiResponse(
-                200, 
+                200,
                 {accessToken, refreshToken: newRefreshToken},
                 "Access token refreshed"
             )
@@ -295,7 +291,6 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
 
     if (!avatar.url) {
         throw new ApiError(400, "Error while uploading on avatar")
-        
     }
 
     const user = await User.findByIdAndUpdate(
@@ -348,7 +343,6 @@ const updateUserCoverImage = asyncHandler(async(req, res) => {
         new ApiResponse(200, user, "Cover image updated successfully")
     )
 })
-
 
 const getUserChannelProfile = asyncHandler(async(req, res) => {
     const {username} = req.params
